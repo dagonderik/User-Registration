@@ -1,0 +1,10 @@
+<p>registration-form works!</p>
+
+<form [formGroup]="userForm">
+    <label for="name">Name: </label>
+    <input id="name" type="text" formControlName="name">
+  
+    <label for="email">Email: </label>
+    <input id="email" type="text" formControlName="email">
+    <button type="button" (click)="onSubmit()" [disabled]="userForm.invalid">Register</button>
+</form>

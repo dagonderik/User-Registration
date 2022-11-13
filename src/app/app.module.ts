@@ -6,19 +6,20 @@ import { AppComponent } from './app.component';
 import { AddEditUsersComponent } from './components/addEditUsers/addEditUsers.component';
 import { UsersComponent } from './components/usersList/usersList.component';
 import { UserService } from './services/user.service';
-import { MessageService } from './services/message.service';
+import { ServerCommunicationLogService } from './services/serverCommunicationLog.service';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ServerCommunicationLogComponent } from './components/server-communication-log/server-communication-log.component';
 
 @NgModule({
-  declarations: [AppComponent, AddEditUsersComponent, UsersComponent],
+  declarations: [AppComponent, AddEditUsersComponent, UsersComponent, ServerCommunicationLogComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
   ],
-  providers: [UserService, MessageService],
+  providers: [UserService, ServerCommunicationLogService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

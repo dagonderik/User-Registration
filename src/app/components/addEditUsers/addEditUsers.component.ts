@@ -11,7 +11,8 @@ import { User } from 'src/app/user';
   styleUrls: ['./addEditUsers.component.css'],
 })
 export class AddEditUsersComponent implements OnInit {
-  user: User | undefined;
+
+  public id: string | null;
 
   userForm = this.formBuilder.nonNullable.group({
     name: ['', Validators.required],
@@ -24,26 +25,32 @@ export class AddEditUsersComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private location: Location
-  ) {}
-
-  ngOnInit(): void {
-    this.getHero();
+  ) {
+    this.id = this.route.snapshot.paramMap.get('id');
   }
 
-  getHero(): void {
-    const id = Number(this.route.snapshot.paramMap.get('id'));
-    if (id !== 0) {
-      this.userService.getUser(id).subscribe((user) => (this.user = user));
+  ngOnInit(): void {
+    this.getUser();
+  }
+
+  getUser(): void {
+    if (this.id) {
+      this.userService.getUser(this.id).subscribe((user) => {
+        this.userForm.patchValue({
+          name: user.name,
+          email: user.email,
+        });
+      });
     }
   }
 
   save(): void {
-    const user: User = {
-      id: this.user?.id,
-      name: this.getValueOrEmptyString(this.userForm.get('name')?.value),
-      email: this.getValueOrEmptyString(this.userForm.get('email')?.value),
-    };
-    if (user) {
+    if (this.id) {
+      const user: User = {
+        id: this.id,
+        name: this.getValueOrEmptyString(this.userForm.get('name')?.value),
+        email: this.getValueOrEmptyString(this.userForm.get('email')?.value),
+      };
       this.userService.editUser(user).subscribe(() => this.goBack());
     }
   }

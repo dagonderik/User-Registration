@@ -4,7 +4,6 @@
     id="name"
     type="text"
     formControlName="name"
-    placeholder="{{ user?.name }}"
   />
 
   <label for="email">Email: </label>
@@ -12,10 +11,9 @@
     id="email"
     type="text"
     formControlName="email"
-    placeholder="{{ user?.email }}"
   />
-  <button type="button" (click)="onSubmit()" [disabled]="userForm.invalid">
+  <button *ngIf="!id" type="button" (click)="onSubmit()" [disabled]="userForm.invalid">
     Register
   </button>
-  <button *ngIf="user" (click)="save()">Edit user</button>
+  <button *ngIf="id" (click)="save()" [disabled]="userForm.invalid">Edit user</button>
 </form>

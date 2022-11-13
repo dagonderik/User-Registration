@@ -28,7 +28,7 @@ export class UserService {
     );
   }
 
-  getUser(id: number): Observable<User> {
+  getUser(id: string): Observable<User> {
     const url = `${this.usersUrls}/${id}`;
     return this.http.get<User>(url).pipe(
       tap((_) => this.log(`fetched user id=${id}`)),
@@ -64,7 +64,7 @@ export class UserService {
     this.messageService.add(`UserService: ${message}`);
   }
 
-  private usersUrls = 'http://localhost:8080/users';
+  private usersUrls = 'http://3.87.55.4:8080/registerUser-0.0.1-SNAPSHOT-plain/users';
 
   constructor(
     private http: HttpClient,

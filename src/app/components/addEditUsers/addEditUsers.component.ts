@@ -43,10 +43,8 @@ export class AddEditUsersComponent implements OnInit {
       name: this.getValueOrEmptyString(this.userForm.get('name')?.value),
       email: this.getValueOrEmptyString(this.userForm.get('email')?.value),
     };
-    if (this.user) {
-      this.userService.editUser(this.user)
-      .subscribe(() => this.goBack())
-      ;
+    if (user) {
+      this.userService.editUser(user).subscribe(() => this.goBack());
     }
   }
 

@@ -31,8 +31,8 @@ export class UserService {
   getUser(id: number): Observable<User> {
     const url = `${this.usersUrls}/${id}`;
     return this.http.get<User>(url).pipe(
-      tap((_) => this.log(`fetched hero id=${id}`)),
-      catchError(this.handleError<User>(`getHero id=${id}`))
+      tap((_) => this.log(`fetched user id=${id}`)),
+      catchError(this.handleError<User>(`getUser id=${id}`))
     );
   }
 
@@ -44,9 +44,19 @@ export class UserService {
   }
 
   editUser(user: User): Observable<any> {
-    return this.http.put(`${this.usersUrls}/${user.id}`, user, this.httpOptions).pipe(
-      tap((_) => this.log(`updated hero id=${user.id}`)),
-      catchError(this.handleError<any>('updateHero'))
+    return this.http
+      .put(`${this.usersUrls}/${user.id}`, user, this.httpOptions)
+      .pipe(
+        tap((_) => this.log(`updated user id=${user.id}`)),
+        catchError(this.handleError<any>('editUser'))
+      );
+  }
+
+  deleteUser(id: string): Observable<User> {
+    const url = `${this.usersUrls}/${id}`;
+    return this.http.delete<User>(url, this.httpOptions).pipe(
+      tap((_) => this.log(`deleted user id=${id}`)),
+      catchError(this.handleError<User>('deleteUser'))
     );
   }
 

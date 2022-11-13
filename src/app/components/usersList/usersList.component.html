@@ -6,6 +6,14 @@
       <a routerLink="/edit/{{ user.id }}">
         <span class="badge">{{ user.id }}</span> {{ user.name }}
       </a>
+      <button
+        type="button"
+        class="delete"
+        title="delete user"
+        (click)="delete(user)"
+      >
+        x
+      </button>
     </li>
   </ul>
 </div>

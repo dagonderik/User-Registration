@@ -1,10 +1,21 @@
 <form [formGroup]="userForm">
-    <label for="name">Name: </label>
-    <input id="name" type="text" formControlName="name" placeholder="{{user?.name}}">
-  
-    <label for="email">Email: </label>
-    <input id="email" type="text" formControlName="email" placeholder="{{user?.email}}">
-    <button type="button" (click)="onSubmit()" [disabled]="userForm.invalid">Register</button>
-    <button *ngIf="user" (click)="save()"> Edit user </button>
-</form>
+  <label for="name">Name: </label>
+  <input
+    id="name"
+    type="text"
+    formControlName="name"
+    placeholder="{{ user?.name }}"
+  />
 
+  <label for="email">Email: </label>
+  <input
+    id="email"
+    type="text"
+    formControlName="email"
+    placeholder="{{ user?.email }}"
+  />
+  <button type="button" (click)="onSubmit()" [disabled]="userForm.invalid">
+    Register
+  </button>
+  <button *ngIf="user" (click)="save()">Edit user</button>
+</form>

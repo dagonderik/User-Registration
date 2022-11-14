@@ -14,7 +14,7 @@ import { ServerCommunicationLogComponent } from './components/server-communicati
 @NgModule({
   declarations: [AppComponent, AddEditUsersComponent, UsersComponent, ServerCommunicationLogComponent],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,

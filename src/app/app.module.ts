@@ -10,14 +10,23 @@ import { ServerCommunicationLogService } from './services/serverCommunicationLog
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ServerCommunicationLogComponent } from './components/server-communication-log/server-communication-log.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatCardModule } from '@angular/material/card';
 
 @NgModule({
-  declarations: [AppComponent, AddEditUsersComponent, UsersComponent, ServerCommunicationLogComponent],
+  declarations: [
+    AppComponent,
+    AddEditUsersComponent,
+    UsersComponent,
+    ServerCommunicationLogComponent,
+  ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
+    BrowserAnimationsModule,
+    MatCardModule,
   ],
   providers: [UserService, ServerCommunicationLogService],
   bootstrap: [AppComponent],

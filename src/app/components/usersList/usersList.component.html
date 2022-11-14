@@ -1,19 +1,20 @@
-<h2>Registered Users</h2>
 
-<div>
+<div class="userscontainer">
+  <h2>Registered Users</h2>
   <ul class="users">
-    <li *ngFor="let user of users">
-      <a routerLink="/edit/{{ user.id }}">
-        <span class="badge">{{ user.id }}</span> {{ user.name }}
-      </a>
-      <button
+    <mat-card *ngFor="let user of users">
+      <mat-card-content routerLink="/edit/{{ user.id }}">
+        <mat-card-title>User</mat-card-title>
+        {{ user.name }}
+      </mat-card-content>
+      <mat-card-actions
         type="button"
         class="delete"
         title="delete user"
         (click)="delete(user)"
       >
-        x
-      </button>
-    </li>
+        Remove user
+    </mat-card-actions>
+    </mat-card>
   </ul>
 </div>

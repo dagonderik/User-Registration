@@ -23,7 +23,6 @@ export class UserService {
 
   getUsers(): Observable<User[]> {
     return this.http.get<User[]>(this.usersUrls, this.httpOptions).pipe(
-      tap((_) => this.log('fetched users')),
       catchError(this.handleError<User[]>('getUsers', []))
     );
   }
@@ -31,14 +30,13 @@ export class UserService {
   getUser(id: string): Observable<User> {
     const url = `${this.usersUrls}/${id}`;
     return this.http.get<User>(url).pipe(
-      tap((_) => this.log(`fetched user id=${id}`)),
       catchError(this.handleError<User>(`getUser id=${id}`))
     );
   }
 
   addUser(user: User): Observable<any> {
     return this.http.post<User>(this.usersUrls, user, this.httpOptions).pipe(
-      tap((_) => this.log('added user')),
+      tap((_) => this.log(`added user ${user.name}`)),
       catchError(this.handleError<User>('addUser'))
     );
   }
@@ -61,7 +59,7 @@ export class UserService {
   }
 
   private log(message: string) {
-    this.messageService.add(`UserService: ${message}`);
+    this.messageService.add(`${message}`);
   }
 
   private usersUrls = Constant.USERS_URL;

@@ -1,17 +1,18 @@
-/* usersComponent's private CSS styles */
 .users {
-  margin: 0 0 2em 0;
+  margin: 0 0 2em -10px;
   list-style-type: none;
   padding: 0;
   width: 15em;
+  
 }
 
-input {
-  display: block;
-  width: 100%;
-  padding: 0.5rem;
-  margin: 1rem 0;
-  box-sizing: border-box;
+.mat-card-content {
+  font-size: 1.4em;
+}
+
+.mat-card-title {
+  padding-bottom: 5px;
+  font-size: 0.8em;
 }
 
 .users li {
@@ -21,6 +22,22 @@ input {
 
 .users li:hover {
   left: 0.1em;
+}
+
+.userscontainer {
+  margin-left: 3em;
+}
+
+.mat-card {
+  cursor: pointer;
+  text-align: center;
+  margin: 10px;
+}
+
+.mat-card-actions {
+  background-color: #9a5fa1;
+  border-radius: 5px;
+  padding-top: 1px;
 }
 
 .users a {

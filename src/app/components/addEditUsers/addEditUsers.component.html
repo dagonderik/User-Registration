@@ -1,19 +1,20 @@
 <form [formGroup]="userForm">
   <label for="name">Name: </label>
-  <input
-    id="name"
-    type="text"
-    formControlName="name"
-  />
+  <input id="name" type="text" formControlName="name" />
 
   <label for="email">Email: </label>
-  <input
-    id="email"
-    type="text"
-    formControlName="email"
-  />
-  <button *ngIf="!id" type="button" (click)="onSubmit()" [disabled]="userForm.invalid">
-    Register
+  <input id="email" type="text" formControlName="email" />
+  <div>
+    <button
+      *ngIf="!id"
+      type="button"
+      (click)="onSubmit()"
+      [disabled]="userForm.invalid"
+    >
+      Register
+    </button>
+  </div>
+  <button *ngIf="id" (click)="save()" [disabled]="userForm.invalid">
+    Edit user
   </button>
-  <button *ngIf="id" (click)="save()" [disabled]="userForm.invalid">Edit user</button>
 </form>
